@@ -10,9 +10,6 @@ import styles from './CSS/MyProfile.module.css';
 import axios from "axios";
 import Box from "@mui/material/Box";
 import FooterMenu from "../FooterMenu";
-import {useSelector} from "react-redux";
-import myProfileUpdate from "./MyProfileUpdate";
-
 
 
 const MyProfileUpdate = () => {
@@ -42,7 +39,8 @@ const MyProfileUpdate = () => {
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/profile/myprofileUpdate/${user_id}`); // URL 수정
+                const response =
+                    await axios.get(`https://dongwoossltest.shop/api/profile/myprofileUpdate/${user_id}`);
                 setUserProfileDTO(response.data);
             } catch (error) {
                 console.error("프로필 정보를 가져오는데 실패했습니다.", error);
@@ -51,15 +49,12 @@ const MyProfileUpdate = () => {
         fetchUserProfile();
     }, [user_id]);
 
-
-
     const ImageChange = (event) => {
         const file = event.target.files[0];
 
         if (file) {
             // 네이버 클라우드에 이미지
             uploadImageToNaverCloud(file).then(imageUrl => {
-                console.log(imageUrl)
                 setProfileImage(imageUrl);
             });
         }

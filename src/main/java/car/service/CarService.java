@@ -3,8 +3,10 @@ package car.service;
 import car.entity.Car;
 import car.entity.CarImages;
 import car.entity.ServiceCar;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 public interface CarService {
     Car saveCar(Car car);

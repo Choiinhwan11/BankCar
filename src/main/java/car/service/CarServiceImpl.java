@@ -6,16 +6,18 @@ import car.entity.ServiceCar;
 import car.repo.CarImageRepository;
 import car.repo.CarRepository;
 import car.repo.ServiceCarRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class CarServiceImpl implements CarService {
-    @Autowired
-    private CarRepository carRepository;
+
+    private final CarRepository carRepository;
     @Autowired
     private CarImageRepository carImageRepository;
     @Autowired

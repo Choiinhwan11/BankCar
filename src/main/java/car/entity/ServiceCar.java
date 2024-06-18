@@ -25,6 +25,10 @@ public class ServiceCar {
     @JoinColumn(name = "car_id", nullable = false)
     private Car car;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="carimages_id")
+    private CarImages carImages;
+
     @Column(name = "start_date")
     private LocalDate startDate;
 

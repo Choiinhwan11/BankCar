@@ -39,7 +39,7 @@ const ProfileMain = () => {
                 <header>
                     <h1>프로필</h1>
                 </header>
-                <Link  to={`/profile/myprofile/${user_id}`} className="user-profile">
+                <Link  to={`https://dongwoossltest.shop/api/profile/myprofile/${user_id}`} className="user-profile">
                 <section className="user-info">
                     <div className="user-img-name">
                         {
@@ -105,7 +105,7 @@ const ProfileMain = () => {
                 </button>
                 <ul className="profile-actions">
                     <li>
-                        <Link to={`/profile/usebefore/${user_id}`}>
+                        <Link to={`/profile/checkUseBefore/${user_id}`}>
                             예약한 자동차 보기
                             <div style={{marginRight: "10px"}}>
                                 <ArrowForwardIosIcon/>
