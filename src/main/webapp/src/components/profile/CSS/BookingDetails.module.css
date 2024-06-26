@@ -53,7 +53,7 @@
 }
 
 .button {
-    background-color: #405DE6;
+    background-color: #e17b92;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -100,4 +100,14 @@
 }
 .IoCalendarNumber{
     color: #405DE6;
+}
+.thumbnailContainer {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.thumbnail {
+    cursor: pointer; /* 클릭할 수 있음을 나타내는 커서 */
+    transition: filter 0.3s, opacity 0.3s; /* 부드러운 전환 효과 */
 }

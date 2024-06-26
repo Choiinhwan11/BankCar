@@ -2,6 +2,7 @@ import React from 'react';
 import { FaCar, FaStar } from "react-icons/fa";
 import { IoCalendarNumber } from "react-icons/io5";
 import styles from './CSS/BookingDetails.module.css';
+import UseReview from "./UseReview";
 
 const Details = ({ detailsDTO, currentImageIndex}) => {
     // 기본값 설정
@@ -14,6 +15,10 @@ const Details = ({ detailsDTO, currentImageIndex}) => {
     if (detailsDTO.averRating != null && !isNaN(detailsDTO.averRating)) {
         averRating = detailsDTO.averageRating;
     }
+
+    /*변경한 부분*/
+    const { setCurrentImageIndex } = UseReview({ detailsDTO });
+
     let image = 'https://kr.object.ncloudstorage.com/bitcamp-6th-bucket-102/cars/';
 
     return (
@@ -21,7 +26,7 @@ const Details = ({ detailsDTO, currentImageIndex}) => {
             <div className={styles.imageSlider}>
                 {images.length > 0 ? (
                     <img
-                        src={image+ images[currentImageIndex]}
+                        src={image+images[currentImageIndex]}
                         alt={images[currentImageIndex] || 'Image'}
                         style={{ opacity: 1, maxWidth: '500px', borderRadius: "15px" }}
                     />
@@ -30,10 +35,24 @@ const Details = ({ detailsDTO, currentImageIndex}) => {
                 )}
             </div>
             <div className={styles.imageSlider}>
+                {/*{images.map((item, index) => (*/}
+                {/*    <img key={index} src={image+item} alt={item || 'Thumbnail'}*/}
+                {/*         className={styles.thumbnail}*/}
+                {/*         style={{ width: '100px', opacity: currentImageIndex === index ? 1 : 0.5 }} />*/}
+                {/*))}*/}
+
+                {/*변경된 부분 */}
                 {images.map((item, index) => (
-                    <img key={index} src={image.item} alt={item || 'Thumbnail'}
+                    <img key={index} src={image+item} alt={item || 'Thumbnail'}
                          className={styles.thumbnail}
-                         style={{ width: '100px', opacity: currentImageIndex === index ? 1 : 0.5 }} />
+                         style={{
+                             width: '80px',
+                             opacity: currentImageIndex === index ? 1 : 0.5,
+                             filter: currentImageIndex === index ? 'none' : 'grayscale(50%)' // 회색 처리
+                         }}
+                         onClick={() => setCurrentImageIndex(index)}
+                    />
+
                 ))}
             </div>
             <div className={styles.details}>
